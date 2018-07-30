@@ -1,0 +1,106 @@
+/*** CSS SideBarMenu ***/
+.react-sanfona-item-title {
+    background: #1e282c;
+    border-left: 3px solid #3c8dbc;
+    position: relative;
+    padding: 12px 5px 12px 15px;
+    display: block;
+    text-decoration: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    list-style: none;
+    margin: 0;
+}
+
+.react-sanfona-item-title[aria-expanded="true"] {
+    color: #fff;
+}
+
+.react-sanfona-item-title[aria-expanded="false"] {
+    color: #b8c7ce;
+}
+
+.react-sanfona-item-title[aria-expanded="true"]:after  {
+    font-family: FontAwesome;
+    content: '\f105';
+    font-weight: normal;
+    float: right;
+    margin-right: 10px;
+    animation-name: side-bar-open;
+    animation-duration: 250ms;
+    animation-iteration-count: initial;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.react-sanfona-item-title[aria-expanded="false"]:after {
+    font-family: FontAwesome;
+    content: '\f107';
+    font-weight: normal;
+    float: right;
+    margin-right: 10px;
+    animation-name: side-bar-close;
+    animation-duration: 250ms;
+    animation-iteration-count: initial;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+@keyframes side-bar-open {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(90deg);
+    }
+}
+@keyframes side-bar-close {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(-90deg);
+    }
+}
+
+/**/
+
+
+.react-sanfona-item-body-wrapper {
+    padding: 5px 10px;
+}
+
+.react-sanfona-item-body-wrapper li.active>a,
+.react-sanfona-item-body-wrapper li>a:hover {
+    color: #fff;
+}
+
+.react-sanfona-item-body-wrapper li {
+    color: #8aa4af;
+    list-style: none;
+    width: 100%;
+}
+
+.react-sanfona-item-body-wrapper li:not(:last-child){
+    border-bottom: 1px solid #7e7e7e;
+}
+
+.react-sanfona-item-body-wrapper li a{
+    padding: 5px 5px 5px 15px;
+    display: block;
+    font-size: 14px;
+    position: relative;
+}
+
+.admin-sideBar-menu {
+    color: #4b646f;
+    background: #1a2226;
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+    padding: 10px 25px 10px 15px;
+    font-size: 12px;
+    position: relative;
+    margin: 0;
+}
