@@ -8,6 +8,9 @@ export default class AdminDashBoard extends React.Component {
 			<div>
 				<AdminHeader/>
 				<AdminSideBarMenu/>
+				<div className={'content-wrapper'}>
+					content
+				</div>
 			</div>
 		)
 	}

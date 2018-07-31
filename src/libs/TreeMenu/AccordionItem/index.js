@@ -185,6 +185,7 @@ export default class AccordionItem extends Component {
     return (
       <Root {...this.getProps()} ref="item">
         <AccordionItemTitle
+	      isShowContent={this.props.isShowContent}
           className={titleClassName}
           expanded={this.props.expanded}
           onClick={disabled ? null : onClick}
@@ -224,6 +225,7 @@ AccordionItem.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]),
+	isShowContent: PropTypes.bool,
   className: PropTypes.string,
   disabled: PropTypes.bool,
   disabledClassName: PropTypes.string,
