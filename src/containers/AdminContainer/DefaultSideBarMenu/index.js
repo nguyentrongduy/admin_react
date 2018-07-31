@@ -1,91 +1,19 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {ChangeStatePageLoading} from '../../../actions/pageLoading';
+
 import Accordion from '../../../libs/TreeMenu/Accordion';
 import AccordionItem from '../../../libs/TreeMenu/AccordionItem'
 import './style.css';
 
-const fakeData = [
-	{
-		mainTitle: 'Test main title',
-		listMenu: [
-			{
-				menuTitle: 'title 1',
-				listUrl: [
-					{
-						title: 'link 1',
-						url: '/admin/dashboard'
-					},
-					{
-						title: 'link 1',
-						url: '/admin/dashboard'
-					},
-					{
-						title: 'link 1',
-						url: '/admin/dashboard'
-					}
-				]
-			},
-			{
-				menuTitle: 'title 2',
-				listUrl: [
-					{
-						title: 'link 1',
-						url: '/admin/dashboard'
-					},
-					{
-						title: 'link 1',
-						url: '/admin/dashboard'
-					},
-					{
-						title: 'link 1',
-						url: '/admin/dashboard'
-					}
-				]
-			}
-		]
-	},
-	{
-		mainTitle: 'Test main title',
-		listMenu: [
-			{
-				menuTitle: 'title 1',
-				listUrl: [
-					{
-						title: 'link 1',
-						url: '/admin/dashboard'
-					},
-					{
-						title: 'link 1',
-						url: '/admin/dashboard'
-					},
-					{
-						title: 'link 1',
-						url: '/admin/dashboard'
-					}
-				]
-			},
-			{
-				menuTitle: 'title 2',
-				listUrl: [
-					{
-						title: 'link 1',
-						url: '/admin/dashboard'
-					},
-					{
-						title: 'link 1',
-						url: '/admin/dashboard'
-					},
-					{
-						title: 'link 1',
-						url: '/admin/dashboard'
-					}
-				]
-			}
-		]
-	}
-];
 
-export default class AdminSideBarMenu extends React.Component {
+class AdminSideBarMenu extends React.Component {
+	changePageLoading() {
+		this.props.dispatch(ChangeStatePageLoading());
+	}
+	
 	render() {
+		console.log(this.props);
 		return (
 			<aside className="main-sidebar">
 				<section className="sidebar">
@@ -110,27 +38,38 @@ export default class AdminSideBarMenu extends React.Component {
 					</form>
 
 					<Accordion>
-						<div className="admin-sideBar-menu">MAIN NAVIGATION</div>
-						<AccordionItem title={'test parent'} parentTag={'ul'} expanded={true}>
+						<div className="admin-sideBar-menu">Login and Access</div>
+						<AccordionItem title={'User manager'} parentTag={'ul'} expanded={true}>
 							<li className="active">
-								<a href="/"><i className="fa fa-circle-o"/> Dashboard v1</a>
+								<a href={null}><i className="fa fa-circle-o"/> Danh sách người dùng</a>
 							</li>
 							<li>
-								<a href="/"><i className="fa fa-circle-o"/> Dashboard v1</a>
+								<a href={null}><i className="fa fa-circle-o"/> Dashboard v1</a>
 							</li>
 							<li>
-								<a href="/"><i className="fa fa-circle-o"/> Dashboard v1</a>
+								<a href={null}><i className="fa fa-circle-o"/> Dashboard v1</a>
 							</li>
 						</AccordionItem>
-						<AccordionItem title={'test parent'} parentTag={'ul'} expanded={true}>
+						<AccordionItem title={'Role manager'} parentTag={'ul'}>
 							<li className="active">
-								<a href="/"><i className="fa fa-circle-o"/> Dashboard v1</a>
+								<a href={null}><i className="fa fa-circle-o"/> Dashboard v1</a>
 							</li>
 							<li>
-								<a href="/"><i className="fa fa-circle-o"/> Dashboard v1</a>
+								<a href={null}><i className="fa fa-circle-o"/> Dashboard v1</a>
 							</li>
 							<li>
-								<a href="/"><i className="fa fa-circle-o"/> Dashboard v1</a>
+								<a href={null}><i className="fa fa-circle-o"/> Dashboard v1</a>
+							</li>
+						</AccordionItem>
+						<AccordionItem title={'Permission manager'} parentTag={'ul'}>
+							<li className="active">
+								<a href={null}><i className="fa fa-circle-o"/> Dashboard v1</a>
+							</li>
+							<li>
+								<a href={null}><i className="fa fa-circle-o"/> Dashboard v1</a>
+							</li>
+							<li>
+								<a href={null}><i className="fa fa-circle-o"/> Dashboard v1</a>
 							</li>
 						</AccordionItem>
 					</Accordion>
@@ -139,3 +78,7 @@ export default class AdminSideBarMenu extends React.Component {
 		)
 	}
 }
+
+export default connect((state) => {
+	return {pageLoading: state.pageLoading}
+})(AdminSideBarMenu)

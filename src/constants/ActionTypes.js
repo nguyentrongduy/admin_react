@@ -1,4 +1,5 @@
-export const ActionTyeps = {
+export const ActionTypes = {
+    PAGE_LOADING: 'PAGE_LOADING',
     ADMIN_LOGGING_IN: 'ADMIN_LOGGING_IN',
     ADMIN_CHECK_LOGIN: 'ADMIN_CHECK_LOGIN',
     ADMIN_LOGOUT: 'ADMIN_LOGOUT',
