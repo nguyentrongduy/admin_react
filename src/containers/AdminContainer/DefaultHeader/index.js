@@ -1,42 +1,46 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {ChangeStateSideBarMenu} from '../../../actions/sideBarMenu';
+import HeaderMessage from "../../../components/Backend/HeaderNotify/HeaderMessage";
 
-export default class AdminHeader extends React.Component {
+class AdminHeader extends React.Component {
+
+	constructor(props) {
+		super(props);
+	}
+
+	changeStateSideBarMenu() {
+		console.log(this.props)
+		//change state
+		if(window.innerWidth <= 767){
+
+		}
+		else {
+			this.props.dispatch(ChangeStateSideBarMenu());
+			if(!this.props.adminSideBarMenu){
+				document.querySelector('aside.main-sidebar').style.maxWidth = '230px';
+				document.querySelector('.content-wrapper').style.marginLeft = "230px";
+				document.querySelector('body').setAttribute('class', 'skin-blue sidebar-mini sidebar-open');
+			}
+			else {
+				document.querySelector('aside.main-sidebar').style.maxWidth = '0';
+				document.querySelector('.content-wrapper').style.marginLeft = "0";
+				document.querySelector('body').setAttribute('class', 'skin-blue sidebar-mini');
+			}
+		}
+	}
+
 	render() {
 		return (
 			<header className="main-header">
 
 				<nav className="navbar navbar-static-top">
-					<a href={null} className="sidebar-toggle" data-toggle="push-menu" role="button">
+					<a href={null} onClick={this.changeStateSideBarMenu.bind(this)} className="sidebar-toggle" role="button">
 						<span className="sr-only">Toggle navigation</span>
 					</a>
 					<div className="navbar-custom-menu">
 						<ul className="nav navbar-nav">
-							<li className="dropdown messages-menu">
-								<a href={null} className="dropdown-toggle" data-toggle="dropdown">
-									<i className="fa fa-envelope-o"/>
-									<span className="label label-success">4</span>
-								</a>
-								<ul className="dropdown-menu">
-									<li className="header">You have 4 messages</li>
-									<li>
-										<ul className="menu">
-											<li>
-												<a href={null}>
-													<div className="pull-left">
-														<img src="#" className="img-circle" alt="User Image"/>
-													</div>
-													<h4>
-														Support Team
-														<small><i className="fa fa-clock-o"/> 5 mins</small>
-													</h4>
-													<p>Why not buy a new awesome theme?</p>
-												</a>
-											</li>
-										</ul>
-									</li>
-									<li className="footer"><a href={null}>See All Messages</a></li>
-								</ul>
-							</li>
+							<HeaderMessage/>
 							<li className="dropdown notifications-menu">
 								<a href={null} className="dropdown-toggle" data-toggle="dropdown">
 									<i className="fa fa-bell-o"/>
@@ -194,3 +198,7 @@ export default class AdminHeader extends React.Component {
 		)
 	}
 }
+
+export default connect((state) => {
+	return {adminSideBarMenu: state.adminSideBarMenu}
+})(AdminHeader)

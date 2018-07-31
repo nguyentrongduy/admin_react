@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function AccordionItemTitle({
+  isShowContent,
   className,
   expanded,
   onClick,
@@ -25,6 +26,7 @@ export default function AccordionItemTitle({
 
   return (
     <Root
+      aria-content-show={isShowContent}
       aria-controls={`react-sanfona-item-body-${uuid}`}
       aria-expanded={expanded}
       className={cx('react-sanfona-item-title', className)}
@@ -44,6 +46,7 @@ AccordionItemTitle.defaultProps = {
 AccordionItemTitle.propTypes = {
   className: PropTypes.string,
   expanded: PropTypes.bool,
+  isShowContent: PropTypes.bool,
   onClick: PropTypes.func,
   rootTag: PropTypes.string,
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),

@@ -8,12 +8,14 @@ import './style.css';
 
 
 class AdminSideBarMenu extends React.Component {
+	constructor(props) {
+		super(props);
+	}
 	changePageLoading() {
 		this.props.dispatch(ChangeStatePageLoading());
 	}
 	
 	render() {
-		console.log(this.props);
 		return (
 			<aside className="main-sidebar">
 				<section className="sidebar">
@@ -28,9 +30,9 @@ class AdminSideBarMenu extends React.Component {
 					</div>
 					<form action={null} method="get" className="sidebar-form">
 						<div className="input-group">
-							<input type="text" name="q" className="form-control" placeholder="Search..."/>
+							<input type="text" className="form-control" placeholder="Search..."/>
 							<span className="input-group-btn">
-				            <button type="submit" name="search" id="search-btn" className="btn btn-flat">
+				            <button type="submit" className="btn btn-flat">
 					            <i className="fa fa-search"/>
 			                </button>
 			                </span>
@@ -39,7 +41,7 @@ class AdminSideBarMenu extends React.Component {
 
 					<Accordion>
 						<div className="admin-sideBar-menu">Login and Access</div>
-						<AccordionItem title={'User manager'} parentTag={'ul'} expanded={true}>
+						<AccordionItem title={'User manager'} isShowContent={true} parentTag={'ul'} expanded={true}>
 							<li className="active">
 								<a href={null}><i className="fa fa-circle-o"/> Danh sách người dùng</a>
 							</li>
@@ -50,7 +52,7 @@ class AdminSideBarMenu extends React.Component {
 								<a href={null}><i className="fa fa-circle-o"/> Dashboard v1</a>
 							</li>
 						</AccordionItem>
-						<AccordionItem title={'Role manager'} parentTag={'ul'}>
+						<AccordionItem title={'Role manager'} isShowContent={true} parentTag={'ul'}>
 							<li className="active">
 								<a href={null}><i className="fa fa-circle-o"/> Dashboard v1</a>
 							</li>
@@ -61,7 +63,7 @@ class AdminSideBarMenu extends React.Component {
 								<a href={null}><i className="fa fa-circle-o"/> Dashboard v1</a>
 							</li>
 						</AccordionItem>
-						<AccordionItem title={'Permission manager'} parentTag={'ul'}>
+						<AccordionItem title={'Permission manager'} isShowContent={true} parentTag={'ul'}>
 							<li className="active">
 								<a href={null}><i className="fa fa-circle-o"/> Dashboard v1</a>
 							</li>

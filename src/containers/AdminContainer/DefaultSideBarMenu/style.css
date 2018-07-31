@@ -22,7 +22,7 @@
     color: #b8c7ce;
 }
 
-.react-sanfona-item-title[aria-expanded="true"]:after  {
+.react-sanfona-item-title[aria-expanded="true"][aria-content-show="true"]:after  {
     font-family: FontAwesome;
     content: '\f105';
     font-weight: normal;
@@ -35,7 +35,7 @@
     animation-fill-mode: forwards;
 }
 
-.react-sanfona-item-title[aria-expanded="false"]:after {
+.react-sanfona-item-title[aria-expanded="false"][aria-content-show="true"]:after {
     font-family: FontAwesome;
     content: '\f107';
     font-weight: normal;
@@ -92,6 +92,7 @@
     font-size: 14px;
     position: relative;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .admin-sideBar-menu {
@@ -104,4 +105,16 @@
     font-size: 12px;
     position: relative;
     margin: 0;
+}
+
+aside.main-sidebar {
+    max-width: 0;
+    overflow: hidden;
+    transition: max-width 650ms ease;
+}
+
+#root>div>.content-wrapper {
+    margin-left: 0;
+    overflow: hidden;
+    transition: margin-left 650ms ease;
 }

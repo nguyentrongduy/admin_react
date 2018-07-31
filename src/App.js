@@ -17,7 +17,7 @@ export default class App extends React.Component {
 		return (
 			<HashRouter>
 				<Switch>
-					{document.querySelector('body').setAttribute('class', 'hold-transition skin-blue sidebar-mini')}
+					{document.querySelector('body').setAttribute('class', 'skin-blue sidebar-mini')}
 					<Route exact path={RouteDefine.AdminLogin} component={AdminLogin} />
 					{RouteDefine.AdminIndexToDashBoard.map((value, i) =>
 						<Route path={value} key={i} component={AdminDashBoard} />
