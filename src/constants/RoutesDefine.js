@@ -8,4 +8,8 @@ export const RouteDefine = {
 		'/admin/index/',
 		'/admin/dashboard'
 	],
+
+	AdminSeeAllMessage: '/admin/all-message',
+	AdminSeeAllNotify: '/admin/all-notify',
+	AdminSeeAddTask: '/admin/all-task'
 };

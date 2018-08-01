@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {ChangeStateSideBarMenu} from '../../../actions/sideBarMenu';
 import HeaderMessage from "../../../components/Backend/HeaderNotify/HeaderMessage";
+import HeaderNotify from "../../../components/Backend/HeaderNotify/HeaderNotify";
+import HeaderTagAndFlag from "../../../components/Backend/HeaderNotify/HeaderTagAndFlag";
 
 class AdminHeader extends React.Component {
 
@@ -41,115 +43,8 @@ class AdminHeader extends React.Component {
 					<div className="navbar-custom-menu">
 						<ul className="nav navbar-nav">
 							<HeaderMessage/>
-							<li className="dropdown notifications-menu">
-								<a href={null} className="dropdown-toggle" data-toggle="dropdown">
-									<i className="fa fa-bell-o"/>
-									<span className="label label-warning">10</span>
-								</a>
-								<ul className="dropdown-menu">
-									<li className="header">You have 10 notifications</li>
-									<li>
-										<ul className="menu">
-											<li>
-												<a href={null}>
-													<i className="fa fa-users text-aqua"/> 5 new members joined today
-												</a>
-											</li>
-											<li>
-												<a href={null}>
-													<i className="fa fa-warning text-yellow"/> Very long description
-													here that may not fit into the
-													page and may cause design problems
-												</a>
-											</li>
-											<li>
-												<a href={null}>
-													<i className="fa fa-users text-red"/> 5 new members joined
-												</a>
-											</li>
-											<li>
-												<a href={null}>
-													<i className="fa fa-shopping-cart text-green"/> 25 sales made
-												</a>
-											</li>
-											<li>
-												<a href={null}>
-													<i className="fa fa-user text-red"/> You changed your username
-												</a>
-											</li>
-										</ul>
-									</li>
-									<li className="footer"><a href={null}>View all</a></li>
-								</ul>
-							</li>
-							<li className="dropdown tasks-menu">
-								<a href={null} className="dropdown-toggle" data-toggle="dropdown">
-									<i className="fa fa-flag-o"/>
-									<span className="label label-danger">9</span>
-								</a>
-								<ul className="dropdown-menu">
-									<li className="header">You have 9 tasks</li>
-									<li>
-										<ul className="menu">
-											<li>
-												<a href={null}>
-													<h3>
-														Design some buttons
-														<small className="pull-right">20%</small>
-													</h3>
-													<div className="progress xs">
-														<div className="progress-bar progress-bar-aqua" style={{width: '20%'}} role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-															<span className="sr-only">20% Complete</span>
-														</div>
-													</div>
-												</a>
-											</li>
-											<li>
-												<a href={null}>
-													<h3>
-														Create a nice theme
-														<small className="pull-right">40%</small>
-													</h3>
-													<div className="progress xs">
-														<div className="progress-bar progress-bar-green" style={{width: '40%'}} role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-															<span className="sr-only">40% Complete</span>
-														</div>
-													</div>
-												</a>
-											</li>
-											<li>
-												<a href={null}>
-													<h3>
-														Some task I need to do
-														<small className="pull-right">60%</small>
-													</h3>
-													<div className="progress xs">
-														<div className="progress-bar progress-bar-red" style={{width: '60%'}} role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-															<span className="sr-only">60% Complete</span>
-														</div>
-													</div>
-												</a>
-											</li>
-											<li>
-												<a href={null}>
-													<h3>
-														Make beautiful transitions
-														<small className="pull-right">80%</small>
-													</h3>
-													<div className="progress xs">
-														<div className="progress-bar progress-bar-yellow" style={{width: '80%'}} role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-															<span className="sr-only">80% Complete</span>
-														</div>
-													</div>
-												</a>
-											</li>
-										</ul>
-									</li>
-									<li className="footer">
-										<a href={null}>View all tasks</a>
-									</li>
-								</ul>
-							</li>
+							<HeaderNotify/>
+							<HeaderTagAndFlag/>
 							<li className="dropdown user user-menu">
 								<a href={null} className="dropdown-toggle" data-toggle="dropdown">
 									<img src="#" className="user-image" alt="User Image"/>

@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import {RouteDefine} from '../../../constants/RoutesDefine';
 
 const fakeData = [
     {
@@ -6,12 +8,27 @@ const fakeData = [
         timer: '10 m ago',
         content: 'hello world'
     },
-    {
-        from: 'Nguyen Nguyen',
-        timer: '11 m ago',
-        content: 'hello gay'
-    }
-]
+	{
+		from: 'Nguyen Nguyen',
+		timer: '11 m ago',
+		content: 'hello gay'
+	},
+	{
+		from: 'Nguyen Nguyen',
+		timer: '11 m ago',
+		content: 'hello gay'
+	},
+	{
+		from: 'Nguyen Nguyen',
+		timer: '11 m ago',
+		content: 'hello gay'
+	},
+	{
+		from: 'Nguyen Nguyen',
+		timer: '11 m ago',
+		content: 'hello gay'
+	}
+];
 
 const RenderMessage = (props) => {
     return(
@@ -33,40 +50,53 @@ const RenderMessage = (props) => {
 export default class HeaderMessage extends React.Component {
     constructor(props) {
         super(props);
-        this.isDisPlay = 'none';
-        this.state = {
-            isShow: false
-        };
-        this.setState();
-        this.SetDisPlay();
+	    this.setWrapperRef = this.setWrapperRef.bind(this);
+	    this.handleClickOutSide = this.handleClickOutSide.bind(this);
+        this.state = {isShow: false}
     }
+
+	componentDidMount() {
+		document.addEventListener('mousedown', this.handleClickOutSide);
+	}
+
+	componentWillUnmount() {
+		document.removeEventListener('mousedown', this.handleClickOutSide);
+	}
+
+	setWrapperRef(node) {
+		this.wrapperRef = node;
+	}
 
     UpdateStateMessageNotify() {
-        this.state = {...this.state, isShow: !this.state.isShow};
-        this.SetDisPlay();
+        this.setState({...this.state, isShow: !this.state.isShow});
     }
 
-    SetDisPlay() {
-        this.isDisPlay = this.state.isShow ? 'block' : 'none';
+    handleClickOutSide(event) {
+	    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+		    if(this.state.isShow)
+		    	this.setState({...this.state, isShow: !this.state.isShow})
+	    }
     }
 
     render() {
         return(
-            <li className="dropdown messages-menu">
-                <a href={null} onClick={this.UpdateStateMessageNotify.bind(this)}>
+            <li className="dropdown messages-menu" ref={this.setWrapperRef}>
+                <a href={null} onClick={this.UpdateStateMessageNotify.bind(this)} style={{cursor: 'pointer'}}>
                     <i className="fa fa-envelope-o"/>
-                    <span className="label label-success">4</span>
+                    <span className="label label-success">{fakeData.length}</span>
                 </a>
-                <ul className="dropdown-menu" style={{display: this.isDisPlay}}>
-                    <li className="header">You have 4 messages</li>
+                <ul className="dropdown-menu" style={{display: this.state.isShow ? 'block' : 'none'}}>
+                    <li className="header">You have {fakeData.length} messages</li>
                     <li>
                         <ul className="menu">
-                            {fakeData.map((e, i) => 
+                            {fakeData.map((e, i) =>
                                 <RenderMessage message={e} key={i} />
                             )}
                         </ul>
                     </li>
-                    <li className="footer"><a href={null}>See All Messages</a></li>
+                    <li className="footer">
+                        <Link to={RouteDefine.AdminSeeAllMessage} >See all messages</Link>
+                    </li>
                 </ul>
             </li>
         )

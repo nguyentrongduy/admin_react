@@ -10,6 +10,7 @@ import {RouteDefine} from './constants/RoutesDefine';
 //Admin Component
 import AdminLogin from './containers/AdminLogin';
 import AdminDashBoard from "./containers/AdminContainer/DashBoard";
+import NotFound from "./components/Backend/NotFound";
 
 
 export default class App extends React.Component {
@@ -20,8 +21,9 @@ export default class App extends React.Component {
 					{document.querySelector('body').setAttribute('class', 'skin-blue sidebar-mini')}
 					<Route exact path={RouteDefine.AdminLogin} component={AdminLogin} />
 					{RouteDefine.AdminIndexToDashBoard.map((value, i) =>
-						<Route path={value} key={i} component={AdminDashBoard} />
+						<Route exact path={value} key={i} component={AdminDashBoard} />
 					)}
+					<Route path={'/admin/*'} component={NotFound}/>
 				</Switch>
 			</HashRouter>
 		)
