@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {ChangeStatePageLoading} from '../../../actions/pageLoading';
 
 import Accordion from '../../../libs/TreeMenu/Accordion';
 import AccordionItem from '../../../libs/TreeMenu/AccordionItem'
@@ -11,14 +10,28 @@ class AdminSideBarMenu extends React.Component {
 	constructor(props) {
 		super(props);
 	}
-	changePageLoading() {
-		this.props.dispatch(ChangeStatePageLoading());
-	}
 	
 	render() {
+		console.log(document);
+		let mainHeader = {};
+		if(window.innerWidth <= 767){
+
+		}
+		else {
+			if(this.props.adminSideBarMenu){
+				mainHeader.maxWidth = '230px';
+				// document.querySelector('.content-wrapper').style.marginLeft = "230px";
+				document.querySelector('body').setAttribute('class', 'skin-blue sidebar-mini sidebar-open');
+			}
+			else {
+				mainHeader.maxWidth = '0';
+				// document.querySelector('.content-wrapper').style.marginLeft = "0";
+				document.querySelector('body').setAttribute('class', 'skin-blue sidebar-mini');
+			}
+		}
 		return (
-			<aside className="main-sidebar">
-				<section className="sidebar">
+			<aside className="main-sidebar" style={mainHeader}>
+				<section className={this.props.adminSideBarMenu ? 'sidebar cs-fade-in-350' : 'sidebar'}>
 					<div className="user-panel">
 						<div className="pull-left image">
 							<img src="#" className="img-circle" alt="User Image"/>
@@ -41,7 +54,7 @@ class AdminSideBarMenu extends React.Component {
 
 					<Accordion>
 						<div className="admin-sideBar-menu">Login and Access</div>
-						<AccordionItem title={'User manager'} isShowContent={true} parentTag={'ul'} expanded={true}>
+						<AccordionItem title={'User manager'} isShowContent={this.props.adminSideBarMenu} parentTag={'ul'} expanded={true}>
 							<li className="active">
 								<a href={null}><i className="fa fa-circle-o"/> Danh sách người dùng</a>
 							</li>
@@ -52,7 +65,7 @@ class AdminSideBarMenu extends React.Component {
 								<a href={null}><i className="fa fa-circle-o"/> Dashboard v1</a>
 							</li>
 						</AccordionItem>
-						<AccordionItem title={'Role manager'} isShowContent={true} parentTag={'ul'}>
+						<AccordionItem title={'Role manager'} isShowContent={this.props.adminSideBarMenu} parentTag={'ul'}>
 							<li className="active">
 								<a href={null}><i className="fa fa-circle-o"/> Dashboard v1</a>
 							</li>
@@ -63,7 +76,7 @@ class AdminSideBarMenu extends React.Component {
 								<a href={null}><i className="fa fa-circle-o"/> Dashboard v1</a>
 							</li>
 						</AccordionItem>
-						<AccordionItem title={'Permission manager'} isShowContent={true} parentTag={'ul'}>
+						<AccordionItem title={'Permission manager'} isShowContent={this.props.adminSideBarMenu} parentTag={'ul'}>
 							<li className="active">
 								<a href={null}><i className="fa fa-circle-o"/> Dashboard v1</a>
 							</li>
@@ -81,6 +94,6 @@ class AdminSideBarMenu extends React.Component {
 	}
 }
 
-export default connect((state) => {
-	return {pageLoading: state.pageLoading}
+export default  connect((state) => {
+    return {adminSideBarMenu: state.adminSideBarMenu};
 })(AdminSideBarMenu)

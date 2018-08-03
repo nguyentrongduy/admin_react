@@ -1,17 +1,14 @@
 import React from 'react';
-import AdminHeader from "../DefaultHeader";
-import AdminSideBarMenu from "../DefaultSideBarMenu";
+import HeaderStatic from "../DefaultHeaderStatic";
 
 export default class AdminDashBoard extends React.Component {
 	render() {
 		return (
-			<div>
-				<AdminHeader/>
-				<AdminSideBarMenu/>
+			<HeaderStatic>
 				<div className={'content-wrapper'}>
 					content
 				</div>
-			</div>
+			</HeaderStatic>
 		)
 	}
 }
