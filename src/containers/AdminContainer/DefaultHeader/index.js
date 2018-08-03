@@ -4,6 +4,7 @@ import {ChangeStateSideBarMenu} from '../../../actions/sideBarMenu';
 import HeaderMessage from "../../../components/Backend/HeaderNotify/HeaderMessage";
 import HeaderNotify from "../../../components/Backend/HeaderNotify/HeaderNotify";
 import HeaderTagAndFlag from "../../../components/Backend/HeaderNotify/HeaderTagAndFlag";
+import HeaderUser from "../../../components/Backend/HeaderNotify/HeaderUser";
 
 class AdminHeader extends React.Component {
 
@@ -45,42 +46,7 @@ class AdminHeader extends React.Component {
 							<HeaderMessage/>
 							<HeaderNotify/>
 							<HeaderTagAndFlag/>
-							<li className="dropdown user user-menu">
-								<a href={null} className="dropdown-toggle" data-toggle="dropdown">
-									<img src="#" className="user-image" alt="User Image"/>
-										<span className="hidden-xs">Alexander Pierce</span>
-								</a>
-								<ul className="dropdown-menu">
-									<li className="user-header">
-										<img src="#" className="img-circle" alt="User Image"/>
-											<p>
-												Alexander Pierce - Web Developer
-												<small>Member since Nov. 2012</small>
-											</p>
-									</li>
-									<li className="user-body">
-										<div className="row">
-											<div className="col-xs-4 text-center">
-												<a href={null}>Followers</a>
-											</div>
-											<div className="col-xs-4 text-center">
-												<a href={null}>Sales</a>
-											</div>
-											<div className="col-xs-4 text-center">
-												<a href={null}>Friends</a>
-											</div>
-										</div>
-									</li>
-									<li className="user-footer">
-										<div className="pull-left">
-											<a href={null} className="btn btn-default btn-flat">Profile</a>
-										</div>
-										<div className="pull-right">
-											<a href={null} className="btn btn-default btn-flat">Sign out</a>
-										</div>
-									</li>
-								</ul>
-							</li>
+							<HeaderUser/>
 							<li>
 								<a href={null} data-toggle="control-sidebar">
 									<i className="fa fa-gears"/>
